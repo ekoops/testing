@@ -76,9 +76,7 @@ runs:
         FALCOCTL_REGISTRY_AUTH_BASIC: ghcr.io,${{ github.repository_owner }},${{ github.token }}
       run: |
         ${{ inputs.sudo }} mkdir -p /usr/share/falco/plugins
-        ${{ inputs.sudo }} falcoctl artifact install k8saudit-rules
-        ${{ inputs.sudo }} falcoctl artifact install cloudtrail-rules
-        ${{ inputs.sudo }} falcoctl artifact install dummy
+        ${{ inputs.sudo }} falcoctl artifact install json:0.7.0 k8saudit:0.7.0 k8saudit-rules:0.16.0 cloudtrail-rules:0.14.0 cloudtrail:0.10.0 dummy:0.11.4 --resolve-deps=false
    
     - name: Install dependencies for falco-driver-loader tests
       if: ${{ inputs.test-drivers == 'true' }}
