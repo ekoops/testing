@@ -43,8 +43,7 @@ import (
 //
 // todo(jasondellaluce): test Falco behavior on environment variables and their
 // priorities in combination with their args/configs/cmds counterparts:
-//   FALCO_K8S_API, FALCO_K8S_API_CERT, FALCO_MESOS_API, FALCO_HOSTNAME,
-//   FALCO_GRPC_HOSTNAME
+//   FALCO_K8S_API, FALCO_K8S_API_CERT, FALCO_MESOS_API, FALCO_HOSTNAME
 //
 // todo(jasondellaluce): implement tests for Falco reaction to signals:
 //   SIGINT, SIGUSR1, SIGHUP

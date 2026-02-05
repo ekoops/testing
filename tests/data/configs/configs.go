@@ -198,32 +198,6 @@ program_output:
 `,
 )
 
-var GrpcUnixSocket = run.NewStringFileAccessor(
-	"grpc_unix_socket.yaml",
-	`
-# Whether to output events in json or text.
-json_output: false
-
-# Send information logs to stderr and/or syslog
-# Note these are *not* security notification logs!
-# These are just Falco lifecycle (and possibly error) logs.
-log_stderr: false
-log_syslog: false
-
-# Where security notifications should go.
-stdout_output:
-  enabled: false
-
-# gRPC server using an unix socket.
-grpc:
-    enabled: true
-    bind_address: "unix:///tmp/falco/falco.sock"
-    threadiness: 8
-
-grpc_output:
-  enabled: true`,
-)
-
 var PluginsCloudtrailJsonCreateInstances = run.NewStringFileAccessor(
 	"cloudtrail_json_create_instances.yaml",
 	`
