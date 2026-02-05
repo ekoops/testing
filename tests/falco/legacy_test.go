@@ -42,8 +42,6 @@ import (
 	"testing"
 	"time"
 
-	grpcOutputs "github.com/falcosecurity/client-go/pkg/api/outputs"
-
 	"github.com/falcosecurity/testing/pkg/falco"
 	"github.com/falcosecurity/testing/pkg/run"
 	"github.com/falcosecurity/testing/tests"
@@ -2883,23 +2881,6 @@ func TestFalco_Legacy_TestWarnings(t *testing.T) {
 	assert.NotNil(t, warnings.OfItemName("leading_in_not_equals_at_evttype"))
 	assert.NotNil(t, warnings.OfItemName("not_with_evttypes"))
 	assert.NotNil(t, warnings.OfItemName("not_with_evttypes_addl"))
-}
-
-func grpcOutputResponseToFalcoAlert(res *grpcOutputs.Response) *falco.Alert {
-	outputFields := make(map[string]interface{})
-	for k, v := range res.OutputFields {
-		outputFields[k] = v
-	}
-	return &falco.Alert{
-		Time:         res.Time.AsTime(),
-		Rule:         res.Rule,
-		Output:       res.Output,
-		Priority:     res.Priority.String(),
-		Source:       res.Source,
-		Hostname:     res.Hostname,
-		Tags:         res.Tags,
-		OutputFields: outputFields,
-	}
 }
 
 func TestFalco_Legacy_NoPluginsUnknownSource(t *testing.T) {
